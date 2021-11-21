@@ -88,6 +88,10 @@
   </main>
 
   <script>
+
+    // Start your code here
+    // You may move this JS to another file if you wish
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -95,13 +99,101 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
+      //step 3
+      try {
+        testTry();
+      }
+      catch(err) {
+        //expect show testTry is not defined
+        console.log(err.message);
+      }
+      //step 4
+      class emptyPutInError extends Error {
+        constructor(message) {
+          super(message);
+          this.name = 'emptyPutInError';
+        }
+      }
+      try {
+        if (firstNum == '' || secondNum == '') {
+          throw new emptyPutInError('Input is not enough');
+        }
+        console.log('The two number is: ' + firstNum + ' and ' + secondNum);
+      } catch(err) {
+        console.log(err.message);
+      }
+
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
-
+    //step 2
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
-    // Start your code here
-    // You may move this JS to another file if you wish
+    errorBtns[0].addEventListener('click', function() {
+      console.log('Log Func');
+    });
+    errorBtns[1].addEventListener('click', function() {
+      console.error('Error Info');
+    });
+    errorBtns[2].addEventListener('click', function() {
+      console.count('Button times');
+    });
+    errorBtns[3].addEventListener('click', function() {
+      console.warn('Warn Message');
+    });
+    errorBtns[4].addEventListener('click', function() {
+      let x = 1;
+      let y = 2;
+      let info = 'x should be bigger than 2';
+      console.assert(x > y, {x, y, info});
+    });
+    errorBtns[5].addEventListener('click', function() {
+      console.clear();
+    });
+    errorBtns[6].addEventListener('click', function() {
+      console.dir(document.head);
+    });
+    errorBtns[7].addEventListener('click', function() {
+      console.dirxml(document);
+    });
+    errorBtns[8].addEventListener('click', function() {
+      console.group('Start Group');
+    });
+    errorBtns[9].addEventListener('click', function() {
+      console.groupEnd('End Group');
+    });
+    errorBtns[10].addEventListener('click', function() {
+      console.table([
+        {
+          taste: 'apple',
+          type: 'cake',
+        },
+        {
+          taste: 'banana',
+          type: 'cookies',
+        },
+        {
+          taste: 'pear',
+          type: 'bread',
+        },
+      ])
+    });
+    errorBtns[11].addEventListener('click', function() {
+      console.time('Start Time');
+    });
+    errorBtns[12].addEventListener('click', function() {
+      console.timeEnd('End Time');
+    });
+    errorBtns[13].addEventListener('click', function() {
+      const fir = () => {sec();};
+      const sec = () => {thi();};
+      const thi = () => {console.trace();};
+      fir();
+    });
+    errorBtns[14].addEventListener('click', function() {
+      arouseError;
+    });
+
+    
   </script>
 </body>
 
