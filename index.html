@@ -85,12 +85,25 @@
       <button>Console Trace</button>
       <button>Trigger a Global Error</button>
     </section>
+
   </main>
+
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+  window.TrackJS && TrackJS.install({ 
+    token: "4e72924155b14007a60604b64fb6e597"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+  </script>
 
   <script>
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    window.onerror = function (message) {
+      console.log('Message: ' + message)
+    }
 
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -178,10 +191,10 @@
       ])
     });
     errorBtns[11].addEventListener('click', function() {
-      console.time('Start Time');
+      console.time();
     });
     errorBtns[12].addEventListener('click', function() {
-      console.timeEnd('End Time');
+      console.timeEnd();
     });
     errorBtns[13].addEventListener('click', function() {
       const fir = () => {sec();};
@@ -193,7 +206,6 @@
       arouseError;
     });
 
-    
   </script>
 </body>
 
